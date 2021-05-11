@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mysql
+  name: mysql
+  namespace: kube-cloud-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - image: mysql:5.7
+          name: mysql
+          ports:
+            - containerPort: 3306
+              name: http
+              protocol: TCP
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: '123456'
+            - name: MYSQL_DATABASE
+              value: 'kube_cloud_manager'

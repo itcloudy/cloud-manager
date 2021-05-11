@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kube-cloud-manager
+  name: kube-cloud-manager
+  namespace: kube-cloud-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-cloud-manager
+  template:
+    metadata:
+      labels:
+        app: kube-cloud-manager
+    spec:
+      containers:
+        - args:
+            - --config=./config/config.yaml
+          image: hexiaoyun128/kube-cloud-manager:v1
+          imagePullPolicy: Always
+          name: kube-cloud-manager
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /work/config
+              name: kube-config
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: kube-config
+          name: kube-config
+      serviceAccountName: kube-cloud-manager

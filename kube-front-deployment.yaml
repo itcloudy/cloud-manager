@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kube-cloud-manager-front
+  name: kube-cloud-manager-front
+  namespace: kube-cloud-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-cloud-manager-front
+  template:
+    metadata:
+      labels:
+        app: kube-cloud-manager-front
+    spec:
+      containers:
+        - image: hexiaoyun128/kube-cloud-manager-front:v1
+          name: kube-cloud-manager-front
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          env:
+            - name: KUBE_CLOUD_MANAGER_BACKEND
+              value: http://kube-cloud-manager:8080
+

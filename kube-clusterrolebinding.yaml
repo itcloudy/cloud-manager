@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: kube-cloud-manager
+
+  name: kube-cloud-manager
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kube-cloud-manager
+subjects:
+  - kind: ServiceAccount
+    name: kube-cloud-manager
+    namespace: kube-cloud-manager

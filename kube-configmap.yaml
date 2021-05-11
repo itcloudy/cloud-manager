@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: kube-config
+  name: kube-config
+  namespace: kube-cloud-manager
+data:
+  config.yaml: |
+    # 应用配置
+    clusterConfig:
+      autoAddlabels: true
+      agentNamespace: kube-cloud-manager
+    tokenExpire: 8h
+    swaggerEnable: true
+    admin:
+      username: admin
+      password: admin
+    jwtPath:
+    swaggerEnable: true
+    databaseConfig:
+      name: kube_cloud_manager
+      user: root
+      password: 123456
+      address: mysql:3306
+    clusterRateLimit:
+      rate: 20
+      bucket: 40
+    openTracing:
+      serviceName: kube-cloud-manager
+      samplerType: const
+      agentHostPort:
+      samplerParam: 1
+
+
+
+
+  private.pem: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEogIBAAKCAQEA3RcsQuGDMXFcwpOkuGopUGJKERfZzZl8vULPEy4vvpzofVpR
+    LTwXx+swWaMz5dwh2oEormyetqNeqnA1mBmylQKxVFTXdQ7IduaP6WuG/2uSHl+v
+    PLZB/2E+GyFSNDXYP17Tutp29VF2o+FNqbtyrknojJ6Pts8KunPT3DHKqD35dn/K
+    CG4YzJtMpgTvRf3C5gTFLQfIcTC3XQNbjT1Sy9COxGiDTBsdTDDzsxgqecINWCvh
+    U6EArDc25qh4NOUGeGWKSXUSwN6jvBS7qe/3f7V6nmuWaXgBUvVyf2h+OUlmdEtb
+    aY0jX7XaBi4OR7rxb8ONAxvxSNZO16RhVoFshQIDAQABAoIBAEt48Z8TJJnoPOYf
+    SIe7lcbfBrG3Fp7c2nwxJkdB6QKExcik4Dk03llcq/CtibXZ46SXmq+QXM20D0jX
+    bTQy8Yd0l9xV6gcHuN797fqcvkTLD+JWf5eWEAmBxJW2Vj2EdAGN+XE7yogL+xgO
+    fViHqKpeiIgYSK77Fop3p8bvKGMtwlv/otnQFuMIyjkKpXDaYy1O0F1hYvDwsNwU
+    ov+WnDZIzNswvyXvfG7wUJwvcMwZSehnYcHVSLz/9iaW2eH0rpj3ekZTbtr2PI9z
+    VYb69h95yK7663M5C5epuFczTSyihSk4GPu70/aUUIHgLzlQJPGUQ9SgEiEGEyvw
+    MU60X7ECgYEA6hKbAw2tiRFe4QEmmmuEIwQ0YNEWbSyTalgnX0yjNKhQq7jqOdwF
+    MDMJ/caCtJj+tGNj7WkFYQZMnzpsopCGduAQH98vgMirrPVjTq2U2u9tp/WAOspK
+    QzIcBTVGukd1qctZBPnLPMfKr1FfG9VWwGawYecd0/uY1zh/8/o85G8CgYEA8c08
+    oD1/yWnbpShn5GYIzCWId0Kz4bfTVh5h+BWmYwO4+Uo6Shf9u1EfRrSDXpXnHiqM
+    PfX4X38Aqf97CiH7mLsBNG4NHtOpMn0X/QxHXxZkYep3/GR+c4715ZEJOkPC9srw
+    wZbttSH2WHPlf/SG6AKbdbTqlZOiZCVOSzo9gEsCgYB6wZst9MRnuAZsNjBKl8xK
+    mO/nPoBmbRQ6l1S+s/B7szHrfSTJh0vpRTseLjdqAzrA28cSQRujEKyqbPeAIg+C
+    1Gtga6n7/kGaiW61Wm9QinSVuziunFxp9SOgz5nyI3vfuldLNr2ReK4hV6lrbWz7
+    pl8mWRDZlX9Ij8b66ud4XQKBgEy5XcJOoUyMnVhDgOu1AJeeVTXaYW9+v700uMta
+    O0hxtvDK/8Hg6O7V58Gsp36MvCATShqjAKN0jgZi/WySqd2lgNVdEia07JwLm1/8
+    1Gy0kzeKiXX5gTIzq4yjP7VQKP3cGRakSFrQIvWgGLNIKMJXiXKI7GJ3zPBP8g7m
+    tPsPAoGAYyJ1ivtjKsZOGP2LfZ17U89eQvvm+VfZ/uUuwP6LZwnJ78VcOHnSiY9J
+    zcPwLggPP/Ug7FHTBONabuCpDaXe1KxS+o+xbTl3Fbxl/BeY1lh7poKAZ005eVYx
+    EtPyCKUGeeVyB9MrRprOHNXJQM7DKSYdpawO6o4IKvlysm+vT8w=
+    -----END RSA PRIVATE KEY-----
+  public.pem: |
+    -----BEGIN PUBLIC KEY -----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3RcsQuGDMXFcwpOkuGop
+    UGJKERfZzZl8vULPEy4vvpzofVpRLTwXx+swWaMz5dwh2oEormyetqNeqnA1mBmy
+    lQKxVFTXdQ7IduaP6WuG/2uSHl+vPLZB/2E+GyFSNDXYP17Tutp29VF2o+FNqbty
+    rknojJ6Pts8KunPT3DHKqD35dn/KCG4YzJtMpgTvRf3C5gTFLQfIcTC3XQNbjT1S
+    y9COxGiDTBsdTDDzsxgqecINWCvhU6EArDc25qh4NOUGeGWKSXUSwN6jvBS7qe/3
+    f7V6nmuWaXgBUvVyf2h+OUlmdEtbaY0jX7XaBi4OR7rxb8ONAxvxSNZO16RhVoFs
+    hQIDAQAB
+    -----END PUBLIC KEY -----
